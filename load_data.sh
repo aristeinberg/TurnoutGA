@@ -81,8 +81,6 @@ pv STATEWIDE.csv   | # display a progress indicator
   grep -ax '.*'    | # filter out non-ascii stuff altogether since i still had errors after the iconv
   psql $DB -c "COPY $TABLE FROM STDIN DELIMITER ',' CSV HEADER;"
 
-rm STATEWIDE.csv
-
 echo "Creating indices..."
 psql $DB << EOM
 CREATE INDEX ON $TABLE ( "Last Name", "First Name" );
